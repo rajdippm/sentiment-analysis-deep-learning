@@ -1,112 +1,117 @@
-# sentiment-analysis-deep-learning
-Deep learning-based sentiment analysis on the IMDB dataset using CNN and LSTM models. Includes preprocessing, training with callbacks, visualizations, evaluation, and real-time text prediction.
+# 🎬 Sentiment Analysis using Deep Learning (CNN & LSTM)
 
-# 🎬 IMDB Movie Review Sentiment Analysis (CNN & LSTM)
+Deep learning-based sentiment analysis on the **IMDB movie reviews dataset** using **CNN** and **LSTM** models.  
+Includes preprocessing, training with callbacks, visualizations, evaluation, and **real-time text prediction**.
 
-This project performs **binary sentiment analysis** (Positive/Negative) on the **IMDB Movie Reviews dataset** using two deep-learning models:
+---
+
+## 📌 Project Overview
+
+This project performs **binary sentiment classification** (Positive / Negative) using two neural network architectures:
 
 - **Convolutional Neural Network (CNN)**
 - **Long Short-Term Memory Network (LSTM)**
 
-Both models are built using **Keras (TensorFlow backend)** and follow a complete pipeline:  
-dataset loading → preprocessing → padding → model building → training → evaluation → inference.
+Both models are implemented using **Keras (TensorFlow backend)** and follow a complete end-to-end workflow:
+> dataset loading → preprocessing → padding → model building → training → evaluation → inference
 
 ---
 
 ## 📊 Dataset: IMDB Movie Reviews
 
-- 50,000 labeled movie reviews  
-- 25,000 training + 25,000 testing  
-- Labels: **0 = Negative**, **1 = Positive**  
-- Loaded directly from `keras.datasets.imdb`  
-- Only top 20,000 most frequent words are used (`num_words=20000`)
+- **50,000 labeled movie reviews**
+- **25,000 training + 25,000 testing**
+- Labels: **0 = Negative**, **1 = Positive**
+- Loaded via `keras.datasets.imdb`
+- Uses only the **top 20,000 most frequent words**
 
 ---
 
 ## 🧹 Preprocessing Steps
 
-- Convert integer sequences back to text for verification  
+- Convert integer-encoded reviews back to text for verification  
 - Analyze review lengths  
-- Pad all reviews to the **max review length**
-- Vocabulary size = **20,000**
+- Pad all reviews to the maximum review length  
+- Vocabulary size: **20,000 words**
 
 ---
 
 ## 🧠 Model Architectures
 
-### **📌 CNN Model**
+### 📌 CNN Model
 - Embedding Layer  
 - 1D Convolution (Conv1D)  
 - MaxPooling  
 - GlobalMaxPooling  
-- Dense layers  
-- Sigmoid output  
+- Dense Layers  
+- Sigmoid Output  
 
-CNN learns **local word patterns and n-gram features**.
+➡️ **CNN learns local word patterns and n-grams effectively.**
 
 ---
 
-### **📌 LSTM Model**
+### 📌 LSTM Model
 - Embedding Layer  
-- LSTM layer (128 units)  
-- Dense layers + Dropout  
-- Sigmoid output  
+- LSTM Layer (128 units)  
+- Dense Layers + Dropout  
+- Sigmoid Output  
 
-LSTM learns **long-range dependencies and sentence structure**.
+➡️ **LSTM captures long-range dependencies and sentence structure.**
 
 ---
 
 ## ⚙️ Training Details
 
-Both models use:
-
+Both models are trained using:
 - **Binary Crossentropy** loss  
 - **Adam** optimizer  
-- **Accuracy** as evaluation metric  
-- **Callbacks:**  
-  - ModelCheckpoint (save best model)  
-  - EarlyStopping  
-  - ReduceLROnPlateau  
-  - TerminateOnNaN  
+- **Accuracy** as the evaluation metric  
+- **Callbacks**:
+  - ModelCheckpoint (saves best model)
+  - EarlyStopping
+  - ReduceLROnPlateau
+  - TerminateOnNaN
 
 ---
 
-### 🔹 **CNN Model Results**
-- **Training Accuracy:** 98.5%
-- **Validation Accuracy:** 90.6%
+## 📈 Model Performance
+
+### 🔹 CNN Model Results
+- **Training Accuracy:** 98.5%  
+- **Validation Accuracy:** 90.6%  
 - **Test Accuracy:** 89.7%
 
-The CNN model generalizes well and demonstrates strong capability in capturing local text patterns (n-grams).
+The CNN model generalizes well and captures strong local text features.
 
 ---
 
-### 🔹 **LSTM Model Results**
-- **Training Accuracy:** 97.8%
-- **Validation Accuracy:** 88.2%
+### 🔹 LSTM Model Results
+- **Training Accuracy:** 97.8%  
+- **Validation Accuracy:** 88.2%  
 - **Test Accuracy:** 86.3%
 
-The LSTM model performs slightly lower due to modeling long sequences, which can introduce higher overfitting. Still, it achieves strong predictive performance.
+The LSTM performs slightly lower due to more overfitting but still achieves strong results.
 
 ---
 
-### 📊 **Performance Comparison**
+## 📊 Performance Comparison
 
 | Model | Training Accuracy | Validation Accuracy | Test Accuracy |
 |-------|-------------------|---------------------|---------------|
-| **CNN**  | **98.5%**      | **90.6%**           | **89.7%**     |
-| **LSTM** | **97.8%**      | **88.2%**           | **86.3%**     |
+| **CNN**  | 98.5% | 90.6% | 89.7% |
+| **LSTM** | 97.8% | 88.2% | 86.3% |
 
 ---
 
-### 🔍 Interpretation
+## 🔍 Interpretation
 
-- **CNN outperforms LSTM** on validation and test accuracy, indicating better generalization for this dataset.
-- Both models achieve high training accuracy, showing strong learning capability.
-- CNN is typically more effective on IMDB due to capturing short-range text patterns, which aligns with these results.
+- **CNN outperforms LSTM** on validation and test accuracy → better generalization  
+- Both models achieve **high training accuracy**, showing strong learning ability  
+- CNN is often more effective for IMDB data due to capturing **short-range patterns**  
 
 ---
 
-### 📌 Summary
-> **CNN Model:** Best overall performance — strong generalization  
-> **LSTM Model:** Slightly lower but still excellent performance with good sequential understanding  
+## 📌 Summary
 
+- **CNN Model:** Best overall performance — strong generalization  
+- **LSTM Model:** Slightly lower but effective for sequential text modeling  
